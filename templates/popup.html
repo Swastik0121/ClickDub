@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <p aria-label="Geist Mono">
+      <span aria-hidden="true">C</span>
+      <span aria-hidden="true">l</span>
+      <span aria-hidden="true">i</span>
+      <span aria-hidden="true">c</span>
+      <span aria-hidden="true">k</span>
+      <span aria-hidden="true">D</span>
+      <span aria-hidden="true">u</span>
+      <span aria-hidden="true">b</span>
+    </p>
+  </div>
+  <div class="waveWrapper waveAnimation">
+    <div class="glass">
+      <form id="youtubeForm"  action="/transcription" method="POST">
+        <label for="youtubeLink">YouTube Link:</label>
+        <input type="text" id="youtubeLink" class="button" name="yt" placeholder="Enter YouTube link">
+        <button type="button" id="uploadLink" class="button" onclick="updateThumbnail()">Upload Link</button>
+        <div class="trans" id="transcriptContainer"  style="display: none;">
+          <button type="submit" name="trans" value="transcript" id="transcript" class="button" onclick="togglePopup()">Transcript Video</button>
+          <a href='/dub'>
+            <div class="dub">
+              <form id="dubform" action="/dub" method="post">
+              <button type="submit" name="trans" value="dub" class="button" id="dubvideo">Video Dubber</button></form>
+          </a>
+        </div>
+    </div>
+
+
+    </form>
+
+
+    <div id="popup" class="popup1">
+      <div class="popup-content" >
+        <div >
+          <p>
+            {{text}}
+          </p>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+    <div id="thumbnailContainer">
+      <img id="thumbnailImage" alt="">
+    </div>
+  </div>
+  <div id="downloadButtonContainer">
+    <button id="downloadButton" class="button">Download Text</button>
+  </div>
+
+  </div>
+
+  <script src="{{ url_for('static',filename='myscripts.js') }}"></script>
+</body>
+
+</html>

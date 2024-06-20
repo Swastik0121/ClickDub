@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='rough.css') }}">
+</head>
+<body>
+
+
+  <!--ring div starts here-->
+  
+<div class="ring">
+    <i style="--clr:#00ff0a;"></i>
+    <i style="--clr:#ff0057;"></i>
+    <i style="--clr:#fffd44;"></i>
+    <div class="container">
+        <p aria-label="Geist Mono">
+          <span aria-hidden="true">C</span>
+          <span aria-hidden="true">l</span>
+          <span aria-hidden="true">i</span>
+          <span aria-hidden="true">c</span>
+          <span aria-hidden="true">k</span>
+          <span aria-hidden="true">D</span>
+          <span aria-hidden="true">u</span>
+          <span aria-hidden="true">b</span>
+        </p>
+      </div>
+    <div class="login"> 
+        
+      <div class="button">
+        <a href="trans.html">
+            Dub Your YouTube Video
+            <span class="shift">›</span>
+        </a>
+        <div class="mask"></div>
+    </div>
+    <div class="button">
+        <a href="summarization.html">
+            Summarize Papers
+            <span class="shift">›</span>
+        </a>
+        <div class="mask"></div>
+    </div>
+    </div>
+  </div>
+  <!--ring div ends here-->
+  
+  <script src="{{ url_for('static',filename='rough.js') }}"></script>
+</body>
+</html>

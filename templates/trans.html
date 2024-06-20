@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <p aria-label="Geist Mono">
+      <span aria-hidden="true">C</span>
+      <span aria-hidden="true">l</span>
+      <span aria-hidden="true">i</span>
+      <span aria-hidden="true">c</span>
+      <span aria-hidden="true">k</span>
+      <span aria-hidden="true">D</span>
+      <span aria-hidden="true">u</span>
+      <span aria-hidden="true">b</span>
+    </p>
+  </div>
+  <div class="waveWrapper waveAnimation">
+    <div class="glass">
+      <form id="youtubeForm"  action="/dub" method="POST">
+        <label for="youtubeLink">YouTube Link:</label>
+        <input type="text" id="youtubeLink" class="button" name="yt" placeholder="Enter YouTube link">
+        <button type="button" id="uploadLink" class="button" onclick="updateThumbnail()">Upload Link</button>
+        <div class="trans" id="transcriptContainer"  style="display: none;">
+          <button type="submit" name="trans" value="transcript" id="transcript" class="button" onclick="togglePopup()">Transcript Video</button>
+          
+            <div class="dub">
+              <form id="dubform" action="/dub" method="post">
+              <button type="submit" name="trans" value="dub" class="button" id="dubvideo" onclick="loadDubPage()">Video Dubber</button></form>
+          
+        </div>
+    </div>
+
+
+    </form>
+
+
+   
+
+
+    <div id="thumbnailContainer">
+      <img id="thumbnailImage" alt="">
+    </div>
+
+      </div>
+
+      
+    </div>
+
+    
+  </div>
+
+  </div>
+  <div id="contentContainer"></div> 
+  <script src="{{ url_for('static',filename='myscripts.js') }}"></script>
+  <script>
+    function loadDubPage() {
+      fetch('/load')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('contentContainer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading the page:', error));
+    }
+  </script>
+</body>
+
+</html>

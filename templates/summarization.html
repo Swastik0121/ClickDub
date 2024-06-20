@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <p aria-label="Geist Mono">
+      <span aria-hidden="true">C</span>
+      <span aria-hidden="true">l</span>
+      <span aria-hidden="true">i</span>
+      <span aria-hidden="true">c</span>
+      <span aria-hidden="true">k</span>
+      <span aria-hidden="true">D</span>
+      <span aria-hidden="true">u</span>
+      <span aria-hidden="true">b</span>
+    </p>
+  </div>
+  <div class="waveWrapper waveAnimation">
+    <div class="glass">
+      
+        <form id="urlForm" action="/summ" method="post">
+            <label for="urlInput">Enter website URL:</label>
+            <input type="url" id="urlInput" name="urlInput" class="button" placeholder="https://example.com" required>
+            <button type="button" id="submit" class="button">Upload Link</button>
+        <div class="thumbnail-container" id="thumbnailContainer">
+            <img id="thumbnailImage" class="thumbnail-image" src="#" alt="">
+        </div>
+        
+
+  </div>
+
+  <div class="summm">
+    <button type="submit" name="summarization" value="summarize" class="button">Summarize</button>
+  </div>        </form>
+
+ 
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    // Function to handle generating thumbnail preview
+    function generateThumbnail() {
+        var url = document.getElementById('urlInput').value.trim();
+        if (url) {
+            var iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
+            var thumbnailContainer = document.getElementById('thumbnailContainer');
+            thumbnailContainer.innerHTML = '';
+            thumbnailContainer.appendChild(iframe);
+
+            html2canvas(iframe).then(function(canvas) {
+                var thumbnailImage = document.getElementById('thumbnailImage');
+                thumbnailImage.src = canvas.toDataURL();
+            });
+        }
+    }
+
+    // Attach click event listener to the button
+    document.getElementById('submit').addEventListener('click', generateThumbnail);
+  </script>
+</body>
+
+</html>
